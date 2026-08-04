@@ -1,0 +1,49 @@
+.loader {
+        display: inline-block;
+        background: url('../img/loader.gif') no-repeat;
+        background-size: 25px 25px;
+        width: 25px;
+        height: 25px;
+}
+
+/* Podstrona z podziekowaniem */
+
+.thanksPageContainer {
+    width: 1050px;
+    background: #fff;
+    padding: 40px 30px;
+    margin: 0 auto;
+}
+
+.thanksPageContainer .successMsg {
+    color: green;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.thanksPageContainer .bigger{
+    font-size: 15px;
+    line-height: 28px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.thanksPageContainer .a-center{text-align:center !important;}
+
+.thanksPageContainer .mainProd{margin: 0 auto;text-align: center;display: block;}
+
+@media screen and (max-width: 1200px){
+    .thanksPageContainer{
+        width:calc(100% - 20px);
+        margin:10px;
+        margin-top:0px;
+    }
+}
+
+@media screen and (max-width: 480px){
+    .thanksPageContainer {
+        width: calc(100% - 20px);
+        margin: 0 auto;
+        padding: 20px 10px;
+    }
+}
