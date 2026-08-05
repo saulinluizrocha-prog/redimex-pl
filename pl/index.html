@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <title>Redimex — Oficjalnie w Polsce | Zamów teraz</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+  <meta name="robots" content="index,follow">
+  <meta name="description" content="Redimex na odchudzanie — naturalne kapsułki, które pomagają zredukować tkankę tłuszczową. Zamów teraz z 50% rabatem.">
+  <meta property="og:title" content="Redimex — Chudnij szybko i bez efektów ubocznych">
+  <meta property="og:description" content="Redimex na odchudzanie, utrata wagi, redukcja masy ciała, naturalne składniki.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Reset & base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green:        #1a7a3c;
+      --green-dark:   #145f2e;
+      --green-light:  #e6f7ec;
+      --red:          #dc2626;
+      --gray:         #6b7280;
+      --border:       #e5e7eb;
+      --text:         #111827;
+      --font:         'Inter', sans-serif;
+      --radius:       12px;
+      --shadow:       0 4px 16px rgba(0,0,0,.10);
+    }
+    html, body { min-height: 100%; }
+    body {
+      font-family: var(--font);
+      background: #f8faf9;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    img { max-width: 100%; display: block; }
+
+    /* ── Layout ── */
+    .page-wrap { max-width: 560px; margin: 0 auto; padding: 24px 16px 48px; }
+
+    /* ── Hero ── */
+    .hero-title {
+      font-size: 32px;
+      font-weight: 900;
+      text-align: center;
+      color: var(--green-dark);
+      line-height: 1.15;
+      margin-bottom: 6px;
+    }
+    .hero-subtitle {
+      font-size: 16px;
+      text-align: center;
+      color: var(--gray);
+      margin-bottom: 18px;
+    }
+    .hero-img {
+      max-height: 240px;
+      object-fit: contain;
+      margin: 0 auto 18px;
+    }
+    .benefits {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 20px;
+      padding: 14px 18px;
+      background: var(--green-light);
+      border-radius: var(--radius);
+      border-left: 4px solid var(--green);
+    }
+    .benefits li {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--green-dark);
+    }
+    .benefits li::before { content: "✓  "; }
+
+    /* ── Price ── */
+    .price-row {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .price-old {
+      font-size: 20px;
+      color: var(--gray);
+      text-decoration: line-through;
+    }
+    .price-new {
+      font-size: 38px;
+      font-weight: 900;
+      color: var(--green);
+    }
+    .price-badge {
+      display: inline-block;
+      background: var(--red);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 100px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+    .price-note {
+      font-size: 14px;
+      color: var(--gray);
+      margin-top: 4px;
+    }
+
+    /* ── Form card ── */
+    .form-card {
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px 24px 24px;
+      border: 1px solid var(--border);
+    }
+    .form-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--green-dark);
+      text-align: center;
+      margin-bottom: 4px;
+    }
+    .form-subtitle {
+      font-size: 13px;
+      text-align: center;
+      color: var(--gray);
+      margin-bottom: 20px;
+    }
+    .form-group { margin-bottom: 14px; }
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 5px;
+    }
+    .form-input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      font-size: 16px;
+      font-family: var(--font);
+      color: var(--text);
+      transition: border-color .2s, box-shadow .2s;
+      outline: none;
+      -webkit-appearance: none;
+    }
+    .form-input:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(26,122,60,.12);
+    }
+    .form-input.error  { border-color: var(--red); }
+    .form-input.valid  { border-color: #22c55e; }
+
+    /* Phone input wrapper */
+    .phone-wrap { position: relative; }
+    .phone-prefix {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--green-dark);
+      pointer-events: none;
+    }
+    .phone-wrap .form-input { padding-left: 52px; }
+
+    /* Validation message */
+    .field-msg {
+      font-size: 12px;
+      margin-top: 4px;
+      min-height: 16px;
+      font-weight: 600;
+    }
+    .field-msg.err { color: var(--red); }
+    .field-msg.ok  { color: #16a34a; }
+
+    /* Submit button */
+    .btn-submit {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, var(--green-dark), #22c55e);
+      color: #fff;
+      font-size: 18px;
+      font-weight: 900;
+      font-family: var(--font);
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      letter-spacing: .3px;
+      box-shadow: 0 4px 14px rgba(26,122,60,.35);
+      transition: filter .2s, transform .15s;
+      margin-top: 6px;
+    }
+    .btn-submit:hover  { filter: brightness(1.07); }
+    .btn-submit:active { transform: scale(.98); }
+    .btn-submit:disabled { opacity: .65; cursor: not-allowed; }
+
+    /* Security strip */
+    .security-strip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 14px;
+      font-size: 12px;
+      color: var(--gray);
+      font-weight: 600;
+    }
+    .security-strip span { display: flex; align-items: center; gap: 4px; }
+
+    /* Payment icons */
+    .payment-icons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+    .payment-icons img { height: 22px; }
+
+    /* Legal */
+    .legal {
+      font-size: 11px;
+      color: var(--gray);
+      text-align: center;
+      margin-top: 20px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-wrap">
+
+    <!-- ── Hero ── -->
+    <h1 class="hero-title">REDIMEX<br>Oficjalnie w Polsce</h1>
+    <p class="hero-subtitle">Pomaga wyeliminować tkankę tłuszczową w sposób naturalny!</p>
+
+    <img
+      class="hero-img"
+      src="../assets/img/single-prod.png"
+      alt="Redimex"
+      onerror="this.style.display='none'"
+    >
+
+    <ul class="benefits">
+      <li>Kilogramy znikają naturalnie</li>
+      <li>Brak skutków ubocznych</li>
+      <li>Naturalne składniki — 100% bezpieczne</li>
+      <li>Klinicznie potwierdzona skuteczność (UE)</li>
+    </ul>
+
+    <!-- ── Price ── -->
+    <div class="price-row">
+      <span class="price-old">298 PLN</span>
+      <span class="price-badge">-50%</span><br>
+      <span class="price-new">149 PLN</span>
+      <p class="price-note">Zamawiając dzisiaj oszczędzasz <strong>149 PLN</strong>!</p>
+    </div>
+
+    <!-- ── Form ── -->
+    <div class="form-card">
+      <p class="form-title">Złóż zamówienie</p>
+      <p class="form-subtitle">🔒 Twoje dane są chronione protokołem SSL</p>
+
+      <form id="geoForm" novalidate>
+        <!-- Hidden tracking fields -->
+        <input type="hidden" id="f_geo"   name="geo"   value="pl">
+        <input type="hidden" id="f_gclid" name="gclid" value="">
+        <input type="hidden" id="f_sub1"  name="sub1"  value="">
+        <input type="hidden" id="f_sub2"  name="sub2"  value="">
+        <input type="hidden" id="f_sub3"  name="sub3"  value="">
+        <input type="hidden" id="f_sub4"  name="sub4"  value="">
+        <input type="hidden" id="f_sub5"  name="sub5"  value="">
+
+        <!-- Name -->
+        <div class="form-group">
+          <label for="f_name">Imię <span style="color:var(--red)">*</span></label>
+          <input
+            class="form-input"
+            type="text"
+            id="f_name"
+            name="name"
+            placeholder="Wpisz swoje imię"
+            autocomplete="given-name"
+            required
+          >
+          <p class="field-msg" id="name-msg"></p>
+        </div>
+
+        <!-- Phone -->
+        <div class="form-group">
+          <label for="f_phone">Numer telefonu <span style="color:var(--red)">*</span></label>
+          <div class="phone-wrap">
+            <span class="phone-prefix">🇵🇱 +48</span>
+            <input
+              class="form-input"
+              type="tel"
+              id="f_phone"
+              name="phone"
+              placeholder="XXX XXX XXX"
+              autocomplete="tel"
+              inputmode="numeric"
+              required
+            >
+          </div>
+          <p class="field-msg" id="phone-msg"></p>
+        </div>
+
+        <button type="submit" class="btn-submit" id="submitBtn">
+          ZAMAWIAM TERAZ →
+        </button>
+
+        <!-- Security -->
+        <div class="security-strip">
+          <span>🔒 SSL</span>
+          <span>✅ Bezpieczna płatność</span>
+          <span>🇪🇺 Certyfikat UE</span>
+        </div>
+
+        <!-- Payment icons -->
+        <div class="payment-icons">
+          <img src="../assets/img/icons/blik.svg"       alt="BLIK">
+          <img src="../assets/img/icons/payu.svg"       alt="PayU">
+          <img src="../assets/img/icons/visa.svg"       alt="Visa">
+          <img src="../assets/img/icons/mastercard.svg" alt="MasterCard">
+          <img src="../assets/img/icons/paypal.svg"     alt="PayPal">
+          <img src="../assets/img/icons/dpd.svg"        alt="DPD">
+        </div>
+      </form>
+    </div>
+
+    <!-- Legal disclaimer -->
+    <p class="legal">
+      Materiał reklamowy. Efekty mogą być różne dla każdej osoby. Konsument może odstąpić od umowy
+      w terminie 14 dni od otrzymania towaru. Kontakt: departamentjakosci@healthandhabits.com.pl |
+      +48&nbsp;532&nbsp;500&nbsp;125
+    </p>
+
+  </div><!-- /page-wrap -->
+
+  <!-- ══════════════════════════════════
+       SCRIPTS — Phone validation + GEO form
+  ══════════════════════════════════ -->
+  <script>
+  (function () {
+
+    /* ── GEO CONFIG ─────────────────────────── */
+    var GEO = {
+      pl: { code: '48',  digits: 9  },
+      it: { code: '39',  digits: 10 },
+      ro: { code: '40',  digits: 9  },
+      de: { code: '49',  digits: 10 },
+      es: { code: '34',  digits: 9  },
+      pt: { code: '351', digits: 9  },
+      fr: { code: '33',  digits: 9  },
+      hu: { code: '36',  digits: 9  },
+    };
+
+    /* ── URL PARAMS ─────────────────────────── */
+    var params = new URLSearchParams(window.location.search);
+    var geo = (params.get('geo') || 'pl').toLowerCase();
+
+    // Capture tracking params from URL
+    ['gclid','sub1','sub2','sub3','sub4','sub5'].forEach(function (k) {
+      var el = document.getElementById('f_' + k);
+      if (el && params.get(k)) el.value = params.get(k);
+    });
+    document.getElementById('f_geo').value = geo;
+
+    /* ── PHONE NORMALIZE ────────────────────── */
+    function normalizePhone(raw) {
+      var cfg = GEO[geo] || GEO['pl'];
+      // Strip all non-digits
+      var phone = raw.replace(/[\s\-\(\)\.\+]/g, '');
+      // Remove leading 00 + country code
+      if (phone.startsWith('00')) phone = phone.slice(2);
+      if (phone.startsWith(cfg.code)) phone = phone.slice(cfg.code.length);
+      // Remove stray leading zeros
+      while (phone.length > cfg.digits && phone.startsWith('0')) {
+        phone = phone.slice(1);
+      }
+      if (!/^\d+$/.test(phone) || phone.length !== cfg.digits) return null;
+      return '+' + cfg.code + phone;
+    }
+
+    /* ── REAL-TIME PHONE VALIDATION ─────────── */
+    var phoneInput = document.getElementById('f_phone');
+    var phoneMsg   = document.getElementById('phone-msg');
+    var nameInput  = document.getElementById('f_name');
+    var nameMsg    = document.getElementById('name-msg');
+
+    phoneInput.addEventListener('input', function () {
+      // Allow only digits and common phone chars
+      this.value = this.value.replace(/[^0-9\s\-\+\(\)]/g, '');
+      var norm = normalizePhone(this.value);
+      if (this.value.trim() === '') {
+        this.classList.remove('valid','error');
+        phoneMsg.textContent = '';
+        phoneMsg.className   = 'field-msg';
+      } else if (norm) {
+        this.classList.add('valid');
+        this.classList.remove('error');
+        phoneMsg.textContent = '✓ Numer prawidłowy: ' + norm;
+        phoneMsg.className   = 'field-msg ok';
+      } else {
+        this.classList.add('error');
+        this.classList.remove('valid');
+        phoneMsg.textContent = '✗ Podaj prawidłowy numer (9 cyfr dla PL)';
+        phoneMsg.className   = 'field-msg err';
+      }
+    });
+
+    nameInput.addEventListener('blur', function () {
+      if (this.value.trim().length < 2) {
+        this.classList.add('error');
+        nameMsg.textContent = '✗ Podaj swoje imię';
+        nameMsg.className   = 'field-msg err';
+      } else {
+        this.classList.remove('error');
+        this.classList.add('valid');
+        nameMsg.textContent = '';
+        nameMsg.className   = 'field-msg';
+      }
+    });
+
+    /* ── FORM SUBMIT ────────────────────────── */
+    var form      = document.getElementById('geoForm');
+    var submitBtn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      // Validate name
+      if (nameInput.value.trim().length < 2) {
+        nameInput.classList.add('error');
+        nameMsg.textContent = '✗ Podaj swoje imię';
+        nameMsg.className   = 'field-msg err';
+        nameInput.focus();
+        return;
+      }
+
+      // Validate and normalize phone
+      var normalizedPhone = normalizePhone(phoneInput.value);
+      if (!normalizedPhone) {
+        phoneInput.classList.add('error');
+        phoneInput.classList.remove('valid');
+        phoneMsg.textContent = '✗ Podaj prawidłowy numer telefonu';
+        phoneMsg.className   = 'field-msg err';
+        phoneInput.focus();
+        return;
+      }
+
+      // Disable button
+      submitBtn.disabled    = true;
+      submitBtn.textContent = 'Wysyłanie...';
+
+      // Build payload
+      var payload = {
+        name:  nameInput.value.trim(),
+        phone: normalizedPhone,
+        geo:   document.getElementById('f_geo').value,
+        gclid: document.getElementById('f_gclid').value || null,
+        sub1:  document.getElementById('f_sub1').value  || null,
+        sub2:  document.getElementById('f_sub2').value  || null,
+        sub3:  document.getElementById('f_sub3').value  || null,
+        sub4:  document.getElementById('f_sub4').value  || null,
+        sub5:  document.getElementById('f_sub5').value  || null,
+      };
+
+      try {
+        var res = await fetch('/api/order', {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body:    JSON.stringify(payload),
+        });
+
+        if (res.ok) {
+          window.location.href = '/thanks';
+        } else {
+          var err = await res.json().catch(function () { return {}; });
+          alert('Błąd: ' + (err.error || 'Spróbuj ponownie za chwilę.'));
+          submitBtn.disabled    = false;
+          submitBtn.textContent = 'ZAMAWIAM TERAZ →';
+        }
+      } catch (err) {
+        alert('Błąd połączenia. Sprawdź internet i spróbuj ponownie.');
+        submitBtn.disabled    = false;
+        submitBtn.textContent = 'ZAMAWIAM TERAZ →';
+      }
+    });
+
+  })();
+  </script>
+
+</body>
+</html>

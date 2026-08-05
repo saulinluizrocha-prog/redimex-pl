@@ -170,17 +170,27 @@
                             <br>
                             <div class=" form">
                                 <form class="orderForm" id="orderForm">
+                                    <!-- Hidden tracking fields -->
+                                    <input type="hidden" id="h_geo"   name="geo"   value="pl">
+                                    <input type="hidden" id="h_gclid" name="gclid" value="">
+                                    <input type="hidden" id="h_sub1"  name="sub1"  value="">
+                                    <input type="hidden" id="h_sub2"  name="sub2"  value="">
+                                    <input type="hidden" id="h_sub3"  name="sub3"  value="">
+                                    <input type="hidden" id="h_sub4"  name="sub4"  value="">
+                                    <input type="hidden" id="h_sub5"  name="sub5"  value="">
+
                                     <div class="form-group">
                                         <label class="p-l-5" for="name">Imię:</label>
                                         <div class="form-control">
-                                            <input class="w-100" type="text" name="name" required placeholder="Tu wpisz imię" id="name" />
+                                            <input class="w-100" type="text" name="name" required placeholder="Tu wpisz imię" id="name" autocomplete="given-name" />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="p-l-5" for="nr">Numer kontaktowy:</label>
                                         <div class="form-control">
-                                            <input class="w-100" type="text" name="phone" onkeyup="this.value=this.value.replace(/\s/,'')" minlength="5" required placeholder="Tu wpisz numer kontaktowy" id="nr" />
+                                            <input class="w-100" type="tel" name="phone" required placeholder="np. 500 100 200 lub +48 500 100 200" id="nr" inputmode="numeric" autocomplete="tel" />
                                         </div>
+                                        <p id="phone-hint" style="font-size:12px;color:#888;margin-top:4px;"></p>
                                     </div>
                                     <div class="form-group">
                                         <label for="">Akceptowalne metody:</label>
@@ -243,40 +253,96 @@
 </div>
 
 <script>
-document.getElementById('orderForm').addEventListener('submit', async function(e) {
+(function () {
+  /* ── Capture URL params (gclid, sub1-sub5) on page load ── */
+  var urlParams = new URLSearchParams(window.location.search);
+  ['gclid','sub1','sub2','sub3','sub4','sub5'].forEach(function (k) {
+    var el = document.getElementById('h_' + k);
+    if (el && urlParams.get(k)) el.value = urlParams.get(k);
+  });
+
+  /* ── Phone normalization for Poland (PL, +48, 9 digits) ── */
+  function normalizePhone(raw) {
+    var phone = String(raw).replace(/[\s\-\(\)\.\+]/g, '');
+    if (phone.startsWith('00')) phone = phone.slice(2);
+    if (phone.startsWith('48')) phone = phone.slice(2);
+    while (phone.length > 9 && phone.startsWith('0')) phone = phone.slice(1);
+    if (!/^\d+$/.test(phone) || phone.length !== 9) return null;
+    return '+48' + phone;
+  }
+
+  /* ── Real-time phone hint ── */
+  var phoneInput = document.getElementById('nr');
+  var phoneHint  = document.getElementById('phone-hint');
+  phoneInput.addEventListener('input', function () {
+    var norm = normalizePhone(this.value);
+    if (this.value.trim() === '') { phoneHint.textContent = ''; return; }
+    if (norm) {
+      phoneHint.style.color = '#16a34a';
+      phoneHint.textContent = '✓ Numer: ' + norm;
+    } else {
+      phoneHint.style.color = '#dc2626';
+      phoneHint.textContent = '✗ Podaj 9-cyfrowy numer (np. 500 100 200)';
+    }
+  });
+
+  /* ── Form submit ── */
+  document.getElementById('orderForm').addEventListener('submit', async function (e) {
     e.preventDefault();
     var btn = document.getElementById('Zamawiam');
-    btn.disabled = true;
-    btn.value = 'Wysyłanie...';
-    var params = new URLSearchParams(window.location.search);
-    var data = {
-        name: document.getElementById('name').value,
-        phone: document.getElementById('nr').value,
-        sub1: params.get('sub1') || '',
-        sub2: params.get('sub2') || '',
-        sub3: params.get('sub3') || '',
-        sub4: params.get('sub4') || '',
-        sub5: params.get('sub5') || ''
-    };
-    try {
-        var res = await fetch('/api/order', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-        });
-        if (res.ok) {
-            window.location.href = './thanks';
-        } else {
-            alert('Błąd podczas składania zamówienia. Spróbuj ponownie.');
-            btn.disabled = false;
-            btn.value = 'Zamawiam';
-        }
-    } catch(err) {
-        alert('Błąd połączenia. Spróbuj ponownie.');
-        btn.disabled = false;
-        btn.value = 'Zamawiam';
+
+    // Name validation
+    var name = document.getElementById('name').value.trim();
+    if (name.length < 2) {
+      alert('Proszę podać imię.');
+      document.getElementById('name').focus();
+      return;
     }
-});
+
+    // Phone validation + normalization
+    var normalizedPhone = normalizePhone(phoneInput.value);
+    if (!normalizedPhone) {
+      phoneHint.style.color = '#dc2626';
+      phoneHint.textContent = '✗ Podaj prawidłowy numer (9 cyfr, np. 500 100 200)';
+      phoneInput.focus();
+      return;
+    }
+
+    btn.disabled = true;
+    btn.value    = 'Wysyłanie...';
+
+    var data = {
+      name:  name,
+      phone: normalizedPhone,
+      geo:   document.getElementById('h_geo').value   || 'pl',
+      gclid: document.getElementById('h_gclid').value || null,
+      sub1:  document.getElementById('h_sub1').value  || null,
+      sub2:  document.getElementById('h_sub2').value  || null,
+      sub3:  document.getElementById('h_sub3').value  || null,
+      sub4:  document.getElementById('h_sub4').value  || null,
+      sub5:  document.getElementById('h_sub5').value  || null,
+    };
+
+    try {
+      var res = await fetch('/api/order', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify(data)
+      });
+      if (res.ok) {
+        window.location.href = './thanks';
+      } else {
+        alert('Błąd podczas składania zamówienia. Spróbuj ponownie.');
+        btn.disabled = false;
+        btn.value    = 'Zamawiam';
+      }
+    } catch (err) {
+      alert('Błąd połączenia. Spróbuj ponownie.');
+      btn.disabled = false;
+      btn.value    = 'Zamawiam';
+    }
+  });
+})();
 </script>
 
     </body>

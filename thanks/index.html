@@ -1,102 +1,240 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="pl">
   <head>
-    <title>LAZARD worldwide healthcare | Thank you for placing an order!!</title>
+    <title>Dziękujemy za zamówienie! | Redimex Polska</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
     <link rel="shortcut icon" href="favicon.ico">
-    <!-- css styles -->
-    <!--[if lt IE 9]>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/livingston-css3-mediaqueries-js/1.0.0/css3-mediaqueries.min.js"></script><![endif]-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.9.0/css/flag-icon.min.css">
-    <!-- build:css assets/css/style.min.css-->
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Styles -->
     <link rel="stylesheet" href="assets/css/fonts.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <!-- endbuild -->
-    <!-- end css styles -->
     <!-- INTH_SNIPPET_TOP -->
   </head>
   <body>
-    <div class="d-flex flex-column justify-content-between h-100">
-      <!-- header-->
-      <header class="header">
-        <div class="container">
-          <div class="d-flex align-items-center">
-            <div class="logo header-logo"><a href="#"><img class="logo__img" src="assets/images/logo/logo.svg" alt="logo"></a></div>
-            <p class="header__text m-0">Official distributor of <span class="current-product__name">Redimex </span><span class="country"></span></p>
+
+    <!-- ══════════════════════════════════
+         HEADER
+    ══════════════════════════════════ -->
+    <header class="header">
+      <div class="container">
+        <div class="header-inner">
+          <a href="#" class="header-logo">
+            <img src="assets/images/logo/logo.svg" alt="Redimex">
+          </a>
+          <p class="header-text">Oficjalny dystrybutor <strong>Redimex</strong> w Polsce</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- ══════════════════════════════════
+         MAIN
+    ══════════════════════════════════ -->
+    <main class="main">
+      <div class="container">
+
+        <!-- ── SUCCESS BANNER ── -->
+        <div class="success-banner">
+          <div class="success-icon">✓</div>
+          <div>
+            <h1 class="success-title">Dziękujemy za złożenie zamówienia!</h1>
+            <p class="success-subtitle">
+              Twoje zamówienie nr <span class="order-id-badge" id="orderId">#PL-8825605</span>
+              zostało przyjęte i potwierdzone.
+            </p>
           </div>
         </div>
-      </header>
-      <!-- main-->
-      <main class="main">
-        <div class="container">
-          <div class="row">
-            <div class="order__content clearfix">
-              <div class="col-md-6 float-md-left pr-md-2">
-                <div class="order-info__content order-info__content_light_green mb-sm-3 mb-2">
-                  <div class="order-info__info-line">
-                    <div class="d-flex align-items-center"><img class="order-is-issued__img" src="assets/images/icons/order_green.svg" alt="order">
-                      <p class="order-info__title m-0">Thank you for placing an order!</p>
-                    </div>
-                  </div>
-                  <p class="order-info__text m-0"> <span class="current-product__name font-weight-bold">Redimex</span>&nbsp;product specialist will contact you soon to answer your questions and clarify delivery details.</p>
+
+        <!-- ── CONTENT GRID ── -->
+        <div class="content-grid">
+
+          <!-- ════════════════════════════
+               LEFT — GATILHOS / TRIGGERS
+          ════════════════════════════ -->
+          <div class="triggers-column">
+
+            <!-- TRIGGER 1: Stock alert (RED) -->
+            <div class="trigger trigger-red">
+              <div class="trigger-header">
+                <span class="trigger-icon">🔴</span>
+                <h2 class="trigger-title">UWAGA: STANY MAGAZYNOWE SĄ TERAZ NISKIE!</h2>
+              </div>
+              <p class="trigger-text">
+                Twoje zamówienie zostało przyjęte w odpowiednim momencie.
+                Aktualnie posiadamy <strong>ograniczone zapasy</strong> —
+                Twój produkt jest już <strong>zarezerwowany wyłącznie dla Ciebie</strong>
+                i nie może zostać sprzedany innemu klientowi.
+              </p>
+              <div class="stock-bar-wrap">
+                <div class="stock-bar">
+                  <div class="stock-bar-fill"></div>
+                </div>
+                <p class="stock-label">⚠️ Pozostało tylko <strong>23% dostępnych zapasów</strong></p>
+              </div>
+            </div>
+
+            <!-- TRIGGER 2: Specialist contact (BLUE) -->
+            <div class="trigger trigger-blue">
+              <div class="trigger-header">
+                <span class="trigger-icon">📱</span>
+                <h2 class="trigger-title">OCZEKUJ NA POŁĄCZENIE TELEFONICZNE</h2>
+              </div>
+              <p class="trigger-text">
+                Za kilka minut nasi specjaliści skontaktują się z Tobą,
+                aby opracować <strong>Twój spersonalizowany plan kuracji</strong>
+                oraz potwierdzić szczegóły i termin dostawy.
+              </p>
+              <div class="phone-pill">
+                <span class="phone-pill-icon">📞</span>
+                <span class="phone-pill-text">Nasz ekspert zadzwoni wkrótce — miej telefon przy sobie!</span>
+              </div>
+            </div>
+
+            <!-- TRIGGER 3: 30-min countdown (ORANGE) -->
+            <div class="trigger trigger-orange">
+              <div class="trigger-header">
+                <span class="trigger-icon">⏱️</span>
+                <h2 class="trigger-title">NIE PRZEGAP! SKONTAKTUJEMY SIĘ Z TOBĄ W CIĄGU:</h2>
+              </div>
+              <div class="countdown-wrap">
+                <div class="countdown-box">
+                  <span class="countdown-num" id="cntMin">30</span>
+                  <span class="countdown-label">minut</span>
+                </div>
+                <span class="countdown-sep">:</span>
+                <div class="countdown-box">
+                  <span class="countdown-num" id="cntSec">00</span>
+                  <span class="countdown-label">sekund</span>
                 </div>
               </div>
-              <div class="col-md-6 float-md-right pl-md-2">
-                <div class="order-product__content mb-3">
-                  <div class="order-product__item current-product">
-                    <div class="d-flex align-items-center justify-content-between">
-                      <div class="order-product-spec-wrap">
-                        <p class="order-id">Your order number is <span class="order-id__value">8825605-ID</span></p>
-                        <p class="current-product__text"><span class="current-product__name">Redimex</span></p>
-                        <p class="current-product__description m-0"></p>
-                      </div><img class="current-product__img" src="https://static.statthroat.tech/offers/183624ec-45d1-457c-8dc4-bf20b5571d86.png" alt="product">
-                    </div>
-                  </div>
-                  
-                  <div class="order-product__item product-guarantee">
-                    <div class="d-flex align-items-center"><img class="label label_img guarantee-label_img" src="assets/images/labels/guarantee.png" alt="guarantee">
-                      <p class="product-guarantee_text">100% satisfaction guarantee or your money back during 365 days</p>
-                    </div>
-                  </div>
-                  <div class="order-product__item product-confirmed">
-                    <div class="d-flex align-items-center"><img class="label label_img" src="assets/images/labels/confirmed.png" alt="confirmed">
-                      <p class="product-confirmed_text">Product safety and effectiveness are clinically confirmed</p>
-                    </div>
-                  </div>
+              <p class="trigger-text">
+                Nasz konsultant zadzwoni do Ciebie <strong>w ciągu najbliższych 30 minut</strong>.
+                Upewnij się, że Twój telefon jest włączony i dostępny.
+              </p>
+            </div>
+
+          </div><!-- /triggers-column -->
+
+          <!-- ════════════════════════════
+               RIGHT — PRODUCT + SEALS
+          ════════════════════════════ -->
+          <div class="product-column">
+
+            <!-- Product card -->
+            <div class="card">
+              <div class="card-header-green">
+                ✓ &nbsp;Zamówienie potwierdzone i zarezerwowane
+              </div>
+              <div class="product-info">
+                <div>
+                  <p class="order-number-small">Nr zamówienia: <span id="orderIdCard">#PL-8825605</span></p>
+                  <p class="product-name-card">Redimex</p>
+                </div>
+                <img
+                  class="product-img-card"
+                  src="assets/images/products/product1.png"
+                  alt="Redimex"
+                  onerror="this.src='https://static.statthroat.tech/offers/183624ec-45d1-457c-8dc4-bf20b5571d86.png'"
+                >
+              </div>
+            </div>
+
+            <!-- Security seals (NO free shipping) -->
+            <div class="card seals-card">
+              <p class="seals-title">Twoje zakupy są w pełni bezpieczne</p>
+              <div class="seals-grid">
+                <div class="seal">
+                  <span class="seal-icon">🔒</span>
+                  <span class="seal-text">SSL<br>Secured</span>
+                </div>
+                <div class="seal">
+                  <span class="seal-icon">✅</span>
+                  <span class="seal-text">Zamówienie<br>Potwierdzone</span>
+                </div>
+                <div class="seal">
+                  <span class="seal-icon">🏥</span>
+                  <span class="seal-text">Produkt<br>Certyfikowany</span>
+                </div>
+                <div class="seal">
+                  <span class="seal-icon">🇪🇺</span>
+                  <span class="seal-text">Normy<br>Unii Europejskiej</span>
                 </div>
               </div>
-              
             </div>
-          </div>
-        </div>
-      </main>
-      <!-- footer-->
-      <footer class="footer">
-        <div class="container">
-          <div class="d-flex align-items-center">
-            <div class="company-about__content">
-              <div class="logo footer-logo"><a href="#"><img class="logo__img" src="assets/images/logo/logo.svg" alt="logo"></a></div>
-            </div>
-            <div class="footer-contacts__content">
-              <div class="d-flex justify-content-between flex-xl-row flex-column">
-                <p class="footer_address__text m-0">Lazard inc. Grenzacherstrasse 124, floor 9-16 4058 Basel, Switzerland</p>
-                <p class="footer-phone__text m-0">Phone: &nbsp;<a class="footer-phone__link" href="tel:+62215727585">+62 21 5727585</a></p><a class="footer-url__link" href="lazardhealthcare.com" target="_blank">lazardhealthcare.com</a>
+
+            <!-- EU Clinical Confirmation -->
+            <div class="card eu-card">
+              <div class="eu-content">
+                <img
+                  src="assets/images/labels/confirmed.png"
+                  alt="Klinicznie potwierdzone"
+                  class="eu-img"
+                >
+                <p class="eu-text">
+                  Bezpieczeństwo i skuteczność produktu zostały
+                  <strong>klinicznie potwierdzone</strong>
+                </p>
               </div>
             </div>
+
+          </div><!-- /product-column -->
+
+        </div><!-- /content-grid -->
+      </div><!-- /container -->
+    </main>
+
+    <!-- ══════════════════════════════════
+         FOOTER
+    ══════════════════════════════════ -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <a href="#" class="footer-logo">
+            <img src="assets/images/logo/logo.svg" alt="Redimex">
+          </a>
+          <div class="footer-info">
+            <p>Lazard inc. Grenzacherstrasse 124, floor 9-16, 4058 Basel, Switzerland</p>
+            <p>Tel: <a href="tel:+48532500125">+48 532 500 125</a> &nbsp;|&nbsp;
+               <a href="mailto:departamentjakosci@healthandhabits.com.pl">departamentjakosci@healthandhabits.com.pl</a>
+            </p>
           </div>
         </div>
-      </footer>
-    </div>
-    <!-- js scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <!-- build:js assets/js/main.min.js -->
-    <script src="assets/js/main.js"></script>
-    <!-- endbuild -->
-    <!-- end js scripts-->
+      </div>
+    </footer>
+
+    <!-- ══════════════════════════════════
+         SCRIPTS
+    ══════════════════════════════════ -->
+    <script>
+      /* ── Random order ID ── */
+      (function () {
+        var id = '#PL-' + Math.floor(1000000 + Math.random() * 9000000);
+        var els = document.querySelectorAll('#orderId, #orderIdCard');
+        els.forEach(function (el) { el.textContent = id; });
+      })();
+
+      /* ── 30-min countdown ── */
+      (function () {
+        var total = 30 * 60;
+        var minEl = document.getElementById('cntMin');
+        var secEl = document.getElementById('cntSec');
+
+        function tick() {
+          var m = Math.floor(total / 60);
+          var s = total % 60;
+          minEl.textContent = String(m).padStart(2, '0');
+          secEl.textContent = String(s).padStart(2, '0');
+          if (total > 0) total--;
+        }
+
+        tick();
+        setInterval(tick, 1000);
+      })();
+    </script>
+
     <!-- INTH_SNIPPET_BOTTOM -->
   </body>
 </html>
