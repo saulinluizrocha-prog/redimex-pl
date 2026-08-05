@@ -25,6 +25,7 @@
     <meta name="distribution" content="global" />
     <meta name="description" content="Redimex to suplement diety ze starannie dobranym składem roślinnym, wspierający naturalną kontrolę wagi. Zamów online i zapłać dopiero przy odbiorze przesyłki." />
     <meta name="keywords" content="Redimex, suplement diety, kontrola wagi, naturalne składniki, płatność przy odbiorze, odchudzanie, skład, opinie, cena" />
+	<meta name="google-site-verification" content="OZ9y92gjrVGx7BCZrwjEiJqnUBSMea5Pd7iJuMbMOGk" />
     <link rel="canonical" href="https://redimex-pl.vercel.app/" />
 
     <!-- ============ OPEN GRAPH ============ -->
@@ -193,7 +194,10 @@
     }
     </script>
      <!-- INTH_SNIPPET_TOP -->
-
+<script defer
+  data-tag="CDka3zNL68ExR5VdZMXxb7"
+  src="https://cdn.cckdl.com/js/base.min.js">
+</script>
 
 </head>
 
