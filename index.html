@@ -199,6 +199,17 @@
   src="https://cdn.cckdl.com/js/base.min.js">
 </script>
 
+	<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-11543512860"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-11543512860');
+</script> 
+
+
 </head>
 
 <body class="home-page">
